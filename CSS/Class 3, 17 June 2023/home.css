@@ -1,0 +1,18 @@
+h1
+{
+    color: green;
+}
+tr > th /* child selector*/
+{
+ color: white;
+ background-color: blue;
+}
+td
+{
+ color: white;
+ background-color: black;
+}
+* /*globally setting the background color*/
+{
+    background-color: gray;
+}
