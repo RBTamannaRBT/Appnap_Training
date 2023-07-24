@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <Div class="container">
+        <div class="row">
+            <div class="col-12">
+                <button onclick="adds()" class="btn btn-primary" type="button">Add student</button>
+                <table class="table" id="table">
+                    <thead>
+                      <tr>                       
+                        <th scope="col">name</th>
+                        <th scope="col">email</th>
+                        <th scope="col">phone</th>
+                      </tr>
+                    </thead>
+                    <tbody id="slist">                        
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </Div>
+    <script>
+        var students = [
+            {name:"Pluto", age: 44, email: "pluto@mail.com", phone: "01709090909"},
+            { email: "pluto1@mail.com", name:"Pluto1", age: 45, phone: "01809090909"},
+            {age: 45,  email: "pluto2@mail.com", name:"Pluto2", phone: "+8801709090909"}
+                     ]
+        var formating =students.map(function(e){
+            return insert(e)
+        })
+        document.getElementById('slist').innerHTML=formating;
+
+        function adds()
+        {
+            var e={
+                name: 'Pluto3',
+                email: 'pluto3@gmail.com',
+                phone: '+8801709090909'
+            }
+           formating.push(insert(e))
+           document.getElementById('slist').innerHTML=formating;
+        }
+        function insert(e)
+        {
+            return "<tr><td>" + e.name+"</td><td>"+e.email+"</td><td>"+e.phone+"</td></tr>"
+        }
+        
+    </script>
+</body>
+</html>
