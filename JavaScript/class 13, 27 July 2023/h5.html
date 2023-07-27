@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form id="form1">
+                    <div class="mb-3">
+                        <label for="exampleInputName" class="form-label">Name</label>
+                        <input type="text"  class="form-control " id="name">
+                        <div class="invalid-feedback">Name is required</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input type="email"  class="form-control " id="email" aria-describedby="emailHelp">
+                      <div class="invalid-feedback">Email is required</div>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPhone" class="form-label">Phone</label>
+                      <input type="text"  class="form-control " id="phone">
+                      <div class="invalid-feedback">Phone is required</div>
+                    </div>
+                    <button onclick="adds()" type="button" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <Div class="container">
+        <div class="row">
+            <div class="col-12">
+                <table class="table" id="table">
+                    <thead>
+                      <tr>                       
+                        <th scope="col">name</th>
+                        <th scope="col">email</th>
+                        <th scope="col">phone</th>
+                      </tr>
+                    </thead>
+                    <tbody id="slist">                        
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </Div>
+    <script>
+        var students = [
+            {name:"Pluto", age: 44, email: "pluto@mail.com", phone: "01709090909"},
+            { email: "pluto1@mail.com", name:"Pluto1", age: 45, phone: "01809090909"},
+            {age: 45,  email: "pluto2@mail.com", name:"Pluto2", phone: "+8801709090909"}
+                     ]
+        var formating =students.map(function(e){
+            return insert(e)
+        })
+        document.getElementById('slist').innerHTML=formating;
+
+        function adds() 
+        {
+
+            var n = document.getElementById('name');
+            var e = document.getElementById('email');
+            var p = document.getElementById('phone')
+
+            n.className = n.value ? 'form-control is-valid' : 'form-control is-invalid'
+            e.className = e.value ? 'form-control is-valid' : 'form-control is-invalid'
+            p.className = p.value ? 'form-control is-valid' : 'form-control is-invalid'
+
+            if (n.value && e.value && p.value) 
+            {
+                var newStudentInformation = {
+                    email: e.value,
+                    name: n.value,
+                    phone: p.value
+                }
+                formating.push(insert(newStudentInformation))
+
+                document.getElementById("slist").innerHTML = formating
+                n.className = 'form-control';
+                e.className = 'form-control';
+                p.className = 'form-control';
+                document.getElementById('form1').reset() 
+            }
+        }
+        function insert(e)
+        {
+            return "<tr><td>" + e.name+"</td><td>"+e.email+"</td><td>"+e.phone+"</td></tr>"
+        }
+        
+    </script>
+</body>
+</html>
