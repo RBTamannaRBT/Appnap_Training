@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('home','HomeController@viewHome');
+Route::get('home','HomeController@viewHome')->middleware('isLoggedIn');
 
-Route::get('login','LoginController@login');
+Route::get('login','HomeController@index');
+Route::post('login','HomeController@login');
+
+Route::get('logout','HomeController@logout');
+Route::get('changePassword', 'HomeController@viewChangePassword')->middleware('isLoggedIn');
+
